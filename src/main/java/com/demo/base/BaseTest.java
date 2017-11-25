@@ -25,7 +25,7 @@ public class BaseTest {
     }
 
 
-    @AfterMethod
+   /* @AfterMethod
     protected void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
             System.out.println(testResult.getStatus());
@@ -34,5 +34,5 @@ public class BaseTest {
                     + Arrays.toString(testResult.getParameters()) + ".jpg"));
         }
      driver.quit();
-    }
+    }*/
 }
