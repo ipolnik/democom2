@@ -1,11 +1,9 @@
 
 import com.demo.base.BaseTest;
-import org.testng.annotations.*;
-
+import org.testng.annotations.Test;
 
 
 public class FirstTest extends BaseTest {
-
 
     @Test
     public void firstMethod() {
