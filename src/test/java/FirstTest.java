@@ -8,7 +8,7 @@ public class FirstTest extends BaseTest {
     @Test
     public void firstMethod() {
 
-        driver.get("http://www.google.com");
+        driver.get("http://www.google.kz");
 
         System.out.println("website opened!");
 
