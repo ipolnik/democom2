@@ -1,4 +1,5 @@
 import com.demo.base.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
@@ -9,5 +10,6 @@ public class SecondTest extends BaseTest {
         driver.get("http://www.linkedin.com");
 
         System.out.println("website opened!");
+        Assert.assertEquals(23, 45);
     }
 }
