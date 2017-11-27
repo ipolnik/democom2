@@ -10,6 +10,6 @@ public class SecondTest extends BaseTest {
         driver.get("http://www.linkedin.com");
 
         System.out.println("website opened!");
-        Assert.assertEquals(23, 45);
+
     }
 }
