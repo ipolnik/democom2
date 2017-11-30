@@ -3,12 +3,8 @@ package com.demo.pages;
 import com.demo.base.PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 
-/**
- * Created by ipolnik on 11/27/2017.
- */
 public class LoginPage extends PageObjects <LoginPage> {
     private static final String URL = "https://www.dice.com/dashboard/login";
 
@@ -25,10 +21,12 @@ public class LoginPage extends PageObjects <LoginPage> {
          getPage(URL);
     }
     public void fillUpEmailAndPassword(String email, String password){
-     type(email, emailField);
-     type(password, passwordField);
+        System.out.println("Filling up email and password");
+     typeIn(email, emailField);
+     typeIn(password, passwordField);
     }
     public ProfilePage pushSignInButton(){
+        System.out.println("Clicking on Sign In Button");
         click(signInButton);
         return new ProfilePage(driver);
     }
