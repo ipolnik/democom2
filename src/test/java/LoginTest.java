@@ -7,12 +7,13 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest {
 
 
-    LoginPage loginPage = new LoginPage(driver);
-    String expectedPageTitle = "Seeker Dashboard - Profile";
-    String correctProfileName = "Igor Polnik";
+
 
     @Test
     public void positiveLogin() {
+        LoginPage loginPage = new LoginPage(driver);
+        String expectedPageTitle = "Seeker Dashboard - Profile";
+        String correctProfileName = "Igor Polnik";
 
         loginPage.openLogonPage();
 

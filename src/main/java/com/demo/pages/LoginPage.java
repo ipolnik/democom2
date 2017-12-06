@@ -10,7 +10,7 @@ public class LoginPage extends PageObjects <LoginPage> {
 
     private By emailField = By.xpath("//*[@id=\"email\"]");
     private By passwordField = By.xpath("//*[@id=\"password\"]");
-    private By signInButton = By.xpath("//button[type='submit']");
+    private By signInButton = By.xpath("//*[@id=\"loginDataSubmit\"]/div[3]/div/button");
 
 
      public LoginPage(WebDriver driver) {
