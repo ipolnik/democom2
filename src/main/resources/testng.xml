@@ -3,7 +3,11 @@
 <suite name="Suite1" verbose="1" >
     <test name="LoginTest" >
         <classes>
-            <class name="LoginTest" />
+            <class name="LoginTest">
+                <methods>
+                    <exclude name="positiveLogin"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
