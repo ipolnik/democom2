@@ -45,6 +45,7 @@ public class PageObjects<T> {
         {}
         attempts++;
     }
+
 }
     public void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutInSeconds){
         timeOutInSeconds = timeOutInSeconds != null ? timeOutInSeconds : 30;

@@ -42,7 +42,7 @@ public class LoginTest extends BaseTest {
         String password = testData.get("password");
         String description = testData.get("Description");
 
-        System.out.println("Test number: " + testNumber + "n\for " + description + "Wheren\nemail " + email + "And password\n" + password);
+        System.out.println("Test number: " + testNumber + "\nfor " + description + "Where\nemail " + email + "And password\n" + password);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLogInPage();

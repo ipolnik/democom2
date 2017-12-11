@@ -31,6 +31,6 @@ public class BaseTest {
             org.apache.commons.io.FileUtils.copyFile(scrFile, new File("C:\\Users\\ipolnik\\IdeaProjects" + testResult.getName() + "-"
                     + Arrays.toString(testResult.getParameters()) + ".jpg"));
         }
-
+    
     }
 }
