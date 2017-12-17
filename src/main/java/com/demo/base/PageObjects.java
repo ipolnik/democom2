@@ -1,5 +1,6 @@
 package com.demo.base;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -11,8 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PageObjects<T> {
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected Logger log;
 
-    public PageObjects(WebDriver driver) {
+    public PageObjects(WebDriver driver, Logger log) {
+        this.log = log;
         this.driver = driver;
         wait = new WebDriverWait(driver, 40);
     }

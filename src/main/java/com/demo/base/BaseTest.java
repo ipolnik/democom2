@@ -1,29 +1,35 @@
 package com.demo.base;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.io.IOException;
-
 import java.util.Arrays;
-
 
 public class BaseTest {
     protected WebDriver driver;
+    protected Logger log;
+    @BeforeClass(alwaysRun = true)
+    protected void setUpClass(ITestContext ctx){
+    String testName = ctx.getCurrentXmlTest().getName();
+    log = Logger.getLogger(testName);
+    }
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({ "browser" })
+    protected void methodSetUp(String browser) {
+        log.info("Method set up...");
+        driver = BrowserFactory.getDriver(browser, log);
 
-
-    @BeforeTest
-    protected void methodSetUp() {
-        System.out.println("Method set up...");
-        System.setProperty("webdriver.gecko.driver", "C:\\Selenium\\geckodriver.exe");
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
     }
 
+   @AfterMethod(alwaysRun = true)
 
-   @AfterMethod
     protected void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
             System.out.println(testResult.getStatus());
@@ -31,6 +37,11 @@ public class BaseTest {
             org.apache.commons.io.FileUtils.copyFile(scrFile, new File("C:\\Users\\ipolnik\\IdeaProjects" + testResult.getName() + "-"
                     + Arrays.toString(testResult.getParameters()) + ".jpg"));
         }
-    
+
+    }
+  @AfterMethod (alwaysRun = true)
+    protected void methodTearDown(){
+      log.info("Method teardown");
+        driver.quit();
     }
 }

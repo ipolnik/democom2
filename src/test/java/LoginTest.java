@@ -3,17 +3,15 @@ import com.demo.base.CsvDataProvider;
 import com.demo.pages.LoginPage;
 import com.demo.pages.ProfilePage;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Map;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1, groups = {"positive"})
     public void positiveLogin() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driver, log);
         String expectedPageTitle = "Seeker Dashboard - Profile";
         String correctProfileName = "Igor Polnik";
 
@@ -26,7 +24,7 @@ public class LoginTest extends BaseTest {
 
         //Verifications
         // Verify title is correct - <title>Seeker Dashboard - Profile</title>
-        System.out.println("Verification");
+        log.info("Verification");
         String actualTitle = profilePage.getTitle();
         Assert.assertTrue(expectedPageTitle.equals(actualTitle), "PageTitle is not expected.\nExpected"
                 + expectedPageTitle + "\nActual" + actualTitle);
@@ -34,7 +32,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(profilePage.isCorrectProfileLoaded(correctProfileName), "Profile name is not expected");
     }
 
-    @Test (dataProvider = "CsvDataProvider", dataProviderClass = CsvDataProvider.class)
+    @Test(dataProvider = "CsvDataProvider", dataProviderClass = CsvDataProvider.class, priority = 2, groups = {"negative", "broken"})
     public void negativeLogin(Map<String, String> testData) {
         String expectedErrorMessage = "Email and/or password incorrect";
         String testNumber = testData.get("No");
@@ -42,21 +40,19 @@ public class LoginTest extends BaseTest {
         String password = testData.get("password");
         String description = testData.get("Description");
 
-        System.out.println("Test number: " + testNumber + "\nfor " + description + "Where\nemail " + email + "And password\n" + password);
+        log.info("Test number: " + testNumber + "\nfor " + description + " Where\nemail " + email + " And password\n" + password);
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driver, log);
         loginPage.openLogInPage();
 
         loginPage.fillUpEmailAndPassword(email, password);
         // push sign in button
-          loginPage.pushSignInButton();
+        loginPage.pushSignInButton();
 
-          String errorMessage = loginPage.getLoginErrorMessage();
+        String errorMessage = loginPage.getLoginErrorMessage();
 
         Assert.assertTrue(errorMessage.contains(expectedErrorMessage), "Error message is not expected.\nExpected"
                 + expectedErrorMessage + "\nActual" + errorMessage);
-
-}
-
-
+        //Assert.assertTrue(errorMessage.contains(expectedErrorMessage2));
+    }
 }
