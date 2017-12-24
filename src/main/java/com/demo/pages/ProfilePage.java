@@ -13,7 +13,8 @@ public class ProfilePage extends PageObjects<ProfilePage> {
     private By profileContactNameText = By.xpath("//h1[@class=\'profile-contact-name']");
     private By doneProfileButton = By.cssSelector("button.hidden-sm");
     private By titleSearchField = By.cssSelector("#job");
-    private By locationSearchField = By.cssSelector("");
+    private By locationSearchField = By.cssSelector("#location");
+    private By findTechJobs = By.cssSelector("input.btn");
 
 
     public ProfilePage(WebDriver driver, Logger log) {
@@ -36,6 +37,12 @@ public class ProfilePage extends PageObjects<ProfilePage> {
         return new ProfilePage(driver, log);
     }
 
+    public ProfilePage pushFindTechJobsButton() {
+        log.info("Clicking on Find Tech Jobs Button");
+        click(findTechJobs);
+        return new ProfilePage(driver, log);
+    }
+
     public void fillUpTitleAndLocation(String title, String location){
         log.info("Filling up title and location");
         typeIn(title, titleSearchField);
@@ -46,7 +53,6 @@ public class ProfilePage extends PageObjects<ProfilePage> {
         if (getText(profileContactNameText).equals(correctProfileName)){
             return true;
         }
-
         return false;
     }
     }

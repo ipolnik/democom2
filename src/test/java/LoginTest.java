@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class LoginTest extends BaseTest {
 
-    @Test(dataProvider = "CsvDataProvider", priority = 1, groups = {"positive"})
+    @Test(dataProvider = "CsvDataProvider",dataProviderClass = CsvDataProvider.class, priority = 1, groups = {"positive"})
 
     public void positiveLogin(Map<String, String> testData) {
         String email = testData.get("email");

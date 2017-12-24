@@ -5,7 +5,7 @@
    <listener class-name="com.demo.base.TestListener"/>
 </listeners>
 
-    <test name="SearchFieldTest-CH" >
+   <!-- <test name="SearchFieldTest-CH" >
         <parameter name="browser"  value="chrome"/>
         <classes>
             <class name="SearchFieldTest">
@@ -19,7 +19,7 @@
             <class name="SearchFieldTest">
             </class>
         </classes>
-    </test>
+    </test>-->
 
 
        <!-- <test name="EditProfileTest-CH" >
@@ -40,7 +40,7 @@
 -->
 
 
-<!--
+
     <test name="LoginTest-FF" >
         <parameter name="browser"  value="firefox"/>
         <groups>
@@ -56,10 +56,15 @@
 
     <test name="LoginTest-CH" >
         <parameter name="browser"  value="chrome"/>
+        <groups>
+            <run>
+                <exclude name="broken"/>
+            </run>
+        </groups>
         <classes>
             <class name="LoginTest">
             </class>
         </classes>
-    </test>-->
+    </test>
 </suite>
 
