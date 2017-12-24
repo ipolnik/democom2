@@ -5,29 +5,32 @@
    <listener class-name="com.demo.base.TestListener"/>
 </listeners>
 
-    <test name="EditProfileTest-CH" >
-        <parameter name="browser"  value="chrome"/>
-        <classes>
-            <class name="EditProfileTest">
-            </class>
-        </classes>
-    </test>
-
-    <test name="EditProfileTest-FF" >
+    <test name="SearchFieldTest-FF" >
         <parameter name="browser"  value="firefox"/>
-        <classes>
-            <class name="EditProfileTest">
-            </class>
-        </classes>
-    </test>
-
-    <test name=" SearchFieldTest-СH" >
-        <parameter name="browser"  value="crome"/>
         <classes>
             <class name="SearchFieldTest">
             </class>
         </classes>
     </test>
+
+    <!--
+        <test name="EditProfileTest-CH" >
+            <parameter name="browser"  value="chrome"/>
+            <classes>
+                <class name="EditProfileTest">
+                </class>
+            </classes>
+        </test>
+
+            <test name="EditProfileTest-FF" >
+                <parameter name="browser"  value="firefox"/>
+                <classes>
+                    <class name="EditProfileTest">
+                    </class>
+                </classes>
+            </test>
+        -->
+
 
 <!--
     <test name="LoginTest-FF" >
