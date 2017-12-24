@@ -1,5 +1,6 @@
 import com.demo.base.BaseTest;
 import com.demo.pages.ProfilePage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.demo.pages.LoginPage;
 import java.util.Map;
@@ -11,9 +12,9 @@ public class SearchFieldTest extends BaseTest {
     public void findTechJobs(Map<String, String> testData){
         String Keywords = testData.get("Keywords");
         String zipcode_or_city = testData.get("zipcode_or_city");
+        String email = testData.get("email");
+        String password = testData.get("password");
         LoginPage loginPage = new LoginPage(driver, log);
-        String email = "ipolnik@yahoo.com";
-        String password = "456456pro";
 
         loginPage.openLogInPage();
 
@@ -22,7 +23,8 @@ public class SearchFieldTest extends BaseTest {
         ProfilePage profilePage = loginPage.pushSignInButton();
         profilePage.waitForProfilePageToLoad();
 
+        profilePage.fillUpTitleAndLocation(Keywords, zipcode_or_city);
 
-
+        Assert.assertEquals("egfdgfd","gfdgfdgfdg");
     }
 }

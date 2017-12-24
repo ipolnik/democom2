@@ -5,6 +5,14 @@
    <listener class-name="com.demo.base.TestListener"/>
 </listeners>
 
+    <test name="SearchFieldTest-CH" >
+        <parameter name="browser"  value="chrome"/>
+        <classes>
+            <class name="SearchFieldTest">
+            </class>
+        </classes>
+    </test>
+
     <test name="SearchFieldTest-FF" >
         <parameter name="browser"  value="firefox"/>
         <classes>
@@ -13,8 +21,8 @@
         </classes>
     </test>
 
-    <!--
-        <test name="EditProfileTest-CH" >
+
+       <!-- <test name="EditProfileTest-CH" >
             <parameter name="browser"  value="chrome"/>
             <classes>
                 <class name="EditProfileTest">
@@ -29,7 +37,7 @@
                     </class>
                 </classes>
             </test>
-        -->
+-->
 
 
 <!--

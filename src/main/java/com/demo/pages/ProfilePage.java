@@ -37,7 +37,7 @@ public class ProfilePage extends PageObjects<ProfilePage> {
     }
 
     public void fillUpTitleAndLocation(String title, String location){
-        log.info("Filling up email and password");
+        log.info("Filling up title and location");
         typeIn(title, titleSearchField);
         typeIn(location, locationSearchField);
     }
