@@ -4,20 +4,23 @@ import com.demo.pages.LoginPage;
 import com.demo.pages.ProfilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.Map;
 
 public class LoginTest extends BaseTest {
 
-    @Test(priority = 1, groups = {"positive"})
-    public void positiveLogin() {
+    @Test(dataProvider = "CsvDataProvider", priority = 1, groups = {"positive"})
+
+    public void positiveLogin(Map<String, String> testData) {
+        String email = testData.get("email");
+        String password = testData.get("password");
         LoginPage loginPage = new LoginPage(driver, log);
+
         String expectedPageTitle = "Seeker Dashboard - Profile";
         String correctProfileName = "Igor Polnik";
 
         loginPage.openLogInPage();
 
-        loginPage.fillUpEmailAndPassword("ipolnik@yahoo.com", "456456pro");
+        loginPage.fillUpEmailAndPassword(email, password);
         // push profile button and wait page to load
         ProfilePage profilePage = loginPage.pushSignInButton();
         profilePage.waitForProfilePageToLoad();
@@ -25,6 +28,7 @@ public class LoginTest extends BaseTest {
         //Verifications
         // Verify title is correct - <title>Seeker Dashboard - Profile</title>
         log.info("Verification");
+		//Get page title
         String actualTitle = profilePage.getTitle();
         Assert.assertTrue(expectedPageTitle.equals(actualTitle), "PageTitle is not expected.\nExpected"
                 + expectedPageTitle + "\nActual" + actualTitle);
@@ -33,6 +37,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "CsvDataProvider", dataProviderClass = CsvDataProvider.class, priority = 2, groups = {"negative", "broken"})
+
     public void negativeLogin(Map<String, String> testData) {
         String expectedErrorMessage = "Email and/or password incorrect";
         String testNumber = testData.get("No");
@@ -54,5 +59,6 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(errorMessage.contains(expectedErrorMessage), "Error message is not expected.\nExpected"
                 + expectedErrorMessage + "\nActual" + errorMessage);
         //Assert.assertTrue(errorMessage.contains(expectedErrorMessage2));
+
     }
 }
