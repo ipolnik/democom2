@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static sun.plugin.javascript.navig.JSType.URL;
 
 public class ProfilePage extends PageObjects<ProfilePage> {
     private By editProfileButton = By.xpath("//*[@id=\"editProfile\"]");

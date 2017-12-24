@@ -36,6 +36,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(profilePage.isCorrectProfileLoaded(correctProfileName), "Profile name is not expected");
     }
 
+
     @Test(dataProvider = "CsvDataProvider", dataProviderClass = CsvDataProvider.class, priority = 2, groups = {"negative", "broken"})
 
     public void negativeLogin(Map<String, String> testData) {
